@@ -1,0 +1,247 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Online Magic: the Gathering Store">
+<meta name="author" content="Justin Ross">
+<link rel="shortcut icon" href="images/Primetime.ico">
+<title>Primetime Games - Singles, Sealed, Events and More!</title>
+
+<style>
+.carousel-inner>.item>img, .carousel-inner>.item>a>img {
+	width: 70%;
+	margin: auto;
+}
+</style>
+
+<!-- Bootstrap Core CSS -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Custom CSS -->
+<link href="css/blog-home.css" rel="stylesheet">
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+	<!-- Navigation -->
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container-fluid">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+					aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">Primetime</a>
+			</div>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse"
+				id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+					<li><a href="Register.html">Register<span class="sr-only">(current)</span></a></li>
+					<li><a href="database.php">Connect to the Database</a></li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown" role="button" aria-haspopup="true"
+						aria-expanded="false">Dropdown <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="#">Action</a></li>
+							<li><a href="#">Another action</a></li>
+							<li><a href="#">Something else here</a></li>
+							<li role="separator" class="divider"></li>
+							<li><a href="#">Separated link</a></li>
+							<li role="separator" class="divider"></li>
+							<li><a href="#">One more separated link</a></li>
+						</ul></li>
+				</ul>
+				<form class="navbar-form navbar-left" role="search">
+					<div class="form-group" style="display: inline;">
+						<div class="input-group">
+							<input type="text" class="form-control"> <span
+								class="input-group-btn">
+								<button class="btn btn-default" type="button">
+									<span class="glyphicon glyphicon-search"></span>
+								</button>
+							</span>
+						</div>
+					</div>
+				</form>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="#">Cart</a></li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown" role="button" aria-haspopup="true"
+						aria-expanded="false">Account <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="#">Order History</a></li>
+							<li><a href="#">Wish List</a></li>
+							<li><a href="#">Help</a></li>
+							<li role="separator" class="divider"></li>
+							<li><a href="#">Sign Out</a></li>
+						</ul></li>
+				</ul>
+			</div>
+			<!-- /.navbar-collapse -->
+		</div>
+		<!-- /.container-fluid -->
+	</nav>
+
+	<!-- Page Content -->
+	<br>
+	<br>
+	<br>
+	<form method="post" action="http://localhost:8080/Magic_Store/Login">
+		Name <input type="text" name="user"> <input type="submit"
+			value="submit">
+	</form>
+	<div class="container">
+		<br>
+		<div id="banner" class="carousel slide" data-ride="carousel">
+			<!-- Indicators -->
+			<ol class="carousel-indicators">
+				<li data-target="#banner" data-slide-to="0" class="active"></li>
+				<li data-target="#banner" data-slide-to="1"></li>
+				<li data-target="#banner" data-slide-to="2"></li>
+			</ol>
+
+			<!-- Wrapper for slides -->
+			<div class="carousel-inner" role="listbox">
+				<div class="item active">
+					<img src="images/Zendikar-Pre-Release.jpg" alt="Chania">
+				</div>
+
+				<div class="item">
+					<img src="images/daxos.jpg" alt="Flower">
+				</div>
+
+				<div class="item">
+					<img src="images/liliana.jpg" alt="Chania">
+				</div>
+
+			</div>
+
+			<!-- Left and right controls -->
+			<a class="left carousel-control" href="#banner" role="button"
+				data-slide="prev"> <span
+				class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+				<span class="sr-only">Previous</span>
+			</a> <a class="right carousel-control" href="#banner" role="button"
+				data-slide="next"> <span
+				class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+				<span class="sr-only">Next</span>
+			</a>
+		</div>
+	</div>
+
+
+
+
+	<hr>
+
+	<!-- Title -->
+	<div class="row">
+		<div class="col-lg-12">
+			<h3>Latest Features</h3>
+		</div>
+	</div>
+	<!-- /.row -->
+
+	<!-- Page Features -->
+	<div class="row text-center">
+
+		<div class="col-md-3 col-sm-6 hero-feature">
+			<div class="thumbnail">
+				<img src="http://placehold.it/800x500" alt="">
+				<div class="caption">
+					<h3>Feature Label</h3>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+					<p>
+						<a href="#" class="btn btn-primary">Buy Now!</a> <a href="#"
+							class="btn btn-default">More Info</a>
+					</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-md-3 col-sm-6 hero-feature">
+			<div class="thumbnail">
+				<img src="http://placehold.it/800x500" alt="">
+				<div class="caption">
+					<h3>Feature Label</h3>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+					<p>
+						<a href="#" class="btn btn-primary">Buy Now!</a> <a href="#"
+							class="btn btn-default">More Info</a>
+					</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-md-3 col-sm-6 hero-feature">
+			<div class="thumbnail">
+				<img src="images/liliana.jpg" class="img-responsive" alt="">
+				<div class="caption">
+					<h3>Liliana Vess</h3>
+					<p>Get your very own picture of Liliana I stole online</p>
+					<p>
+						<a href="#" class="btn btn-primary">Buy Now!</a> <a href="#"
+							class="btn btn-default">More Info</a>
+					</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-md-3 col-sm-6 hero-feature">
+			<div class="thumbnail">
+				<img src="http://placehold.it/800x500" alt="">
+				<div class="caption">
+					<h3>Feature Label</h3>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+					<p>
+						<a href="#" class="btn btn-primary">Buy Now!</a> <a href="#"
+							class="btn btn-default">More Info</a>
+					</p>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<!-- /.row -->
+
+	<hr>
+
+	<!-- Footer -->
+	<footer>
+		<div class="row">
+			<div class="col-lg-12">
+				<p>Copyright &copy; Your Website 2014</p>
+			</div>
+		</div>
+	</footer>
+
+	<!-- /.container -->
+
+	<!-- jQuery -->
+	<script src="js/jquery-1.11.3.min.js"></script>
+
+	<!-- Bootstrap Core JavaScript -->
+	<script src="js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

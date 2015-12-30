@@ -3,7 +3,7 @@ The Primetime Games website is an online store which utilizes html, CSS, jQuery,
 
 
 #Design Overview
-	The website is designed to be as close to a Single-Page Application as possible. Each page is dynamic to allow for dynamic linking to the navigation bar. Login and Registration can be done on any page, and the user will be redirected to the page they were viewing when they login. To minimize page refreshes, scripts are used to validate forms, and redirects aren’t done unless the user submits the form successfully. Additionally all database queries are done asynchronously using AJAX to help prevent redirects.
+The website is designed to be as close to a Single-Page Application as possible. Each page is dynamic to allow for dynamic linking to the navigation bar. Login and Registration can be done on any page, and the user will be redirected to the page they were viewing when they login. To minimize page refreshes, scripts are used to validate forms, and redirects aren’t done unless the user submits the form successfully. Additionally all database queries are done asynchronously using AJAX to help prevent redirects.
 
 
 
@@ -13,17 +13,20 @@ The Primetime Games website is an online store which utilizes html, CSS, jQuery,
 
 #Related Works
 
-	The website uses the Bootstrap framework to provide a sleek design for the main page and navigation bar, and a session-based template written entirely in JavaScript to handle the cart, order, and checkout. The index page is an open-source Bootstrap template.
+The website uses the Bootstrap framework to provide a sleek design for the main page and navigation bar, and a session-based template written entirely in JavaScript to handle the cart, order, and checkout. The index page is an open-source Bootstrap template.
 Bootstrap: http://getbootstrap.com/
 Winery: http://www.smashingmagazine.com/2014/02/create-client-side-shopping-cart/
 Shop Homepage: http://startbootstrap.com/template-overviews/shop-homepage/
 
 #System Architectural Design
-	The system utilizes two Amazon EC2 servers, one for Apache, one for Apache Tomcat and MySQL. Since there are no HTML pages the website uses a reverse proxy to link it to the Tomcat server. The Magic_Store directory is ignored to allow the web server to reach the static content located on the Apache server. Additionally, I purchased my own domain name, ekanconbo.com (PrimetimeGames cost a few thousand dollars), and pointed it to my Apache server.
-	 The database contains two tables, account which stores the user’s username, first name, last name, and password and product, which contains the a product’s id, name, price, category, and quantity. 
-		Chosen System Architecture 
-	I chose to implement a 3-tier architecture with the static content located on the apache server, and the application and database located on the dynamic content server. Putting the database on its own server would be ideal, but in the interest of saving money it shares the server.
-	If I had more time and resources to dedicate to the web application, I would like to implement a 4-tier architecture using Hadoop and a database cluster, which would allow for a more robust database.
+The system utilizes two Amazon EC2 servers, one for Apache, one for Apache Tomcat and MySQL. Since there are no HTML pages the website uses a reverse proxy to link it to the Tomcat server. The Magic_Store directory is ignored to allow the web server to reach the static content located on the Apache server. Additionally, I purchased my own domain name, ekanconbo.com (PrimetimeGames cost a few thousand dollars), and pointed it to my Apache server.
+
+The database contains two tables, account which stores the user’s username, first name, last name, and password and product, which contains the a product’s id, name, price, category, and quantity. 
+
+#Chosen System Architecture 
+I chose to implement a 3-tier architecture with the static content located on the apache server, and the application and database located on the dynamic content server. Putting the database on its own server would be ideal, but in the interest of saving money it shares the server.
+
+If I had more time and resources to dedicate to the web application, I would like to implement a 4-tier architecture using Hadoop and a database cluster, which would allow for a more robust database.
 Components
 
 #Login

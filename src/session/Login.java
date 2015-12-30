@@ -6,10 +6,10 @@ import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import java.sql.*;
 
 /**
@@ -40,36 +40,64 @@ public class Login extends HttpServlet {
 		try {
 			Class.forName(jdbcDriver);
 			Connection connection = null;
-			Statement statement = null;
+			connection = DriverManager.getConnection(databaseURL, user, pass);
 			
-			connection = DriverManager.getConnection(databaseURL, user, pass);				
+			String username = request.getParameter("userid");
+			String password = request.getParameter("passwordinput");
+			String rememberme = request.getParameter("rememberme");
 
-			String sql = "SELECT * FROM primetime.account";
+			String sql = "SELECT * FROM primetime.account WHERE username = ? and password = ?";
+			
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
-
-			ResultSet rs = preparedStatement.executeQuery(sql);
-			rs.next();
-			rs.next();
-			String name = rs.getString("username");
-			System.out.println("name: " + name);
+			preparedStatement.setString(1, username);
+			preparedStatement.setString(2, password);
 			
+			response.setContentType("application/json");
+			response.setCharacterEncoding("utf-8");
+			PrintWriter out = response.getWriter();
+			
+			String redirect = "\"\"";
+			String form = "\"Invalid Username and/or Password\"";
+
+			ResultSet rs = preparedStatement.executeQuery();
+			if(rs.next())
+			{
+				Cookie c = new Cookie("username", username);
+
+				if(rememberme != null)
+				{
+					c.setMaxAge(24*60*60);
+				}
+				response.addCookie(c);
+				
+				redirect = "\"" + request.getParameter("forwardTo") + "\"";
+				//RequestDispatcher view = getServletContext().getRequestDispatcher(forwardTo);
+				//view.forward(request, response);
+			}
+	        out.println("{");
+	        out.println("\"redirect\" : "+ redirect+",");
+	        out.println("\"form\" : "+form);
+	        out.println("}");
+	        out.close();
+
+
+
+			
+
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		}
 		
-		
-		final PrintWriter out = response.getWriter();
-        String name = request.getParameter("user");
-        out.println("Hello, " + name);
+
+	
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
-	}
 
+	}
 }

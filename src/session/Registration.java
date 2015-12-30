@@ -4,8 +4,10 @@ package session;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -30,6 +32,13 @@ public class Registration extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		final String jdbcDriver = "com.mysql.jdbc.Driver";
 		final String databaseURL = "jdbc:mysql://54.68.205.239:3306/primetime";
 		
@@ -37,21 +46,30 @@ public class Registration extends HttpServlet {
 		final String pass = "PrimetimeGames";
 		
 		try {
+			
+	        String username = request.getParameter("username");
+	        String password = request.getParameter("password");
+	        String email = request.getParameter("email");
+	        String firstname = request.getParameter("firstname");
+	        String lastname = request.getParameter("lastname");
+
+	        
 			Class.forName(jdbcDriver);
 			Connection connection = null;
 			PreparedStatement preparedStatement = null;
 			
 			connection = DriverManager.getConnection(databaseURL, user, pass);
-			String sql = "INSERT INTO primetime.account (username, password, email) VALUES (?,?,?)";
+			String sql = "INSERT INTO primetime.account (username, password, email, firstname, lastname) VALUES (?,?,?,?,?)";
 			preparedStatement = connection.prepareStatement(sql);
 			
-			preparedStatement.setString(1, "jousting");
-			preparedStatement.setString(2, "Turtleman");
-			preparedStatement.setString(3, "Justin@Justin.jmail.kong");
+			preparedStatement.setString(1, username);
+			preparedStatement.setString(2, password);
+			preparedStatement.setString(3, email);
+			preparedStatement.setString(4, firstname);
+			preparedStatement.setString(5, lastname);
 			
 			//Execute insert SQL statement
-			//preparedStatement.executeUpdate();
-			System.out.println("hello");
+			preparedStatement.executeUpdate();
 			
 			
 		} catch (ClassNotFoundException e) {
@@ -61,16 +79,9 @@ public class Registration extends HttpServlet {
 		}
 		
 		
-		final PrintWriter out = response.getWriter();
-        String name = request.getParameter("user");
-        out.println("Hello, " + name);
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
+		String forwardTo= request.getParameter("forwardTo");
+		RequestDispatcher view = getServletContext().getRequestDispatcher(forwardTo);
+		view.forward(request, response);
 	}
 
 }

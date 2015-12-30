@@ -1,8 +1,12 @@
-package session;
-
+package product;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,57 +15,62 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import java.sql.*;
-
 /**
- * Servlet implementation class Check
+ * Servlet implementation class RemoveProduct
  */
-@WebServlet("/Check")
-public class Check extends HttpServlet {
+@WebServlet("/RemoveProduct")
+public class RemoveProduct extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Check() {
+    public RemoveProduct() {
         super();
+        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		final String jdbcDriver = "com.mysql.jdbc.Driver";
 		final String databaseURL = "jdbc:mysql://54.68.205.239:3306/primetime";
 		
 		final String user = "Justin";
 		final String pass = "PrimetimeGames";
 		
-		final String username = request.getParameter("name");
+		final String id = request.getParameter("removeProductId");
+
+
+
 		try {
+			
 			Class.forName(jdbcDriver);
 			Connection connection = null;
 			PreparedStatement preparedStatement = null;
 			
 			connection = DriverManager.getConnection(databaseURL, user, pass);
-			String sql = "SELECT username FROM primetime.account WHERE username = ?";
+			String sql = "DELETE FROM primetime.product WHERE id=?";
 			preparedStatement = connection.prepareStatement(sql);
 			
-			preparedStatement.setString(1, username);
-			
-			//Execute SQL statement
-			ResultSet rs = preparedStatement.executeQuery();
+			preparedStatement.setString(1, id);
 
-			response.setContentType("text/plain");
-		    response.setCharacterEncoding("UTF-8");
-			if(rs.next())
-			{
-			   response.getWriter().write("true");
-			}
-			else
-			{
-				response.getWriter().write("false");
-			}
+			
+			//Execute insert SQL statement
+			preparedStatement.executeUpdate();
+			
+			String forwardTo= request.getParameter("forwardTo");
+			RequestDispatcher view = getServletContext().getRequestDispatcher(forwardTo);
+			view.forward(request, response);
 
 			
 		} catch (ClassNotFoundException e) {
@@ -69,15 +78,6 @@ public class Check extends HttpServlet {
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		}
-		
-		
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
 	}
 
 }

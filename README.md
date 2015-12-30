@@ -1,5 +1,5 @@
 #System Overview
-The Primetime Games website is an online store which utilizes html, CSS, jQuery, jsps, servlets, and MySQL to buy items. The website allows users to register an account, login, search for items, purchase items, and checkout. Additionally, the admin user (username: admin password: adminadmin) can add and remove products to the site’s backend.
+The Primetime Games website is an online store which utilizes html, CSS, jQuery, jsps, servlets, and MySQL to buy items. The website allows users to register an account, login, search for items, purchase items, and checkout. Additionally, the admin user (whose login information is not listed) can add and remove products to the site’s backend.
 
 
 #Design Overview
